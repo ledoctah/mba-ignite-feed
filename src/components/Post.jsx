@@ -12,7 +12,7 @@ import { Comment } from './Comment';
 
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState([]);
-  const [newCommentText, setNewCommentText] = useState('');
+  const [newCommentText, setNewCommentText] = useState();
 
   const publishedDateFormatted = format(
     publishedAt,
@@ -30,7 +30,11 @@ export function Post({ author, content, publishedAt }) {
   function handleCreateNewComment(event) {
     event.preventDefault();
 
-    setComments([...comments, newCommentText]);
+    const lastCommentId = comments[comments.length - 1]?.id || 0;
+
+    const newComment = { id: lastCommentId + 1, content: newCommentText };
+
+    setComments([...comments, newComment]);
 
     setNewCommentText('');
   }
@@ -80,7 +84,7 @@ export function Post({ author, content, publishedAt }) {
 
       <div className={styles.commentList}>
         {comments.map(comment => (
-          <Comment key={Math.random()} content={comment} />
+          <Comment key={comment.id} content={comment.content} />
         ))}
       </div>
     </article>

@@ -15,22 +15,27 @@ const posts = [
       role: 'Tech Lead',
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { id: 1, type: 'paragraph', content: 'Fala galeraa 👋' },
       {
+        id: 2,
         type: 'paragraph',
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
       },
       {
-        type: 'paragraph',
-        content: [{ type: 'link', content: '👉 jane.design/doctorcare' }],
-      },
-      {
+        id: 3,
         type: 'paragraph',
         content: [
-          { type: 'link', content: '#novoprojeto', href: '#' },
-          { type: 'link', content: '#nlw', href: '#' },
-          { type: 'link', content: '#rocketseat', href: '#' },
+          { id: 4, type: 'link', content: '👉 jane.design/doctorcare' },
+        ],
+      },
+      {
+        id: 5,
+        type: 'paragraph',
+        content: [
+          { id: 6, type: 'link', content: '#novoprojeto', href: '#' },
+          { id: 7, type: 'link', content: '#nlw', href: '#' },
+          { id: 8, type: 'link', content: '#rocketseat', href: '#' },
         ],
       },
     ],
@@ -44,22 +49,27 @@ const posts = [
       role: 'Tech Lead',
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { id: 9, type: 'paragraph', content: 'Fala galeraa 👋' },
       {
+        id: 10,
         type: 'paragraph',
         content:
           'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
       },
       {
-        type: 'paragraph',
-        content: [{ type: 'link', content: '👉 jane.design/doctorcare' }],
-      },
-      {
+        id: 11,
         type: 'paragraph',
         content: [
-          { type: 'link', content: '#novoprojeto', href: '#test3' },
-          { type: 'link', content: '#nlw', href: '#test2' },
-          { type: 'link', content: '#rocketseat', href: '#test' },
+          { id: 12, type: 'link', content: '👉 jane.design/doctorcare' },
+        ],
+      },
+      {
+        id: 13,
+        type: 'paragraph',
+        content: [
+          { id: 14, type: 'link', content: '#novoprojeto', href: '#test3' },
+          { id: 15, type: 'link', content: '#nlw', href: '#test2' },
+          { id: 16, type: 'link', content: '#rocketseat', href: '#test' },
         ],
       },
     ],

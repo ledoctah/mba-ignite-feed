@@ -8,12 +8,12 @@ export function addElement(element) {
   }
 
   if (element.type === 'paragraph') {
-    return <p key={Math.random()}>{formatContent(element.content)}</p>;
+    return <p key={element.id}>{formatContent(element.content)}</p>;
   }
 
   if (element.type === 'link') {
     return (
-      <a key={Math.random()} href={element.href}>
+      <a key={element.id} href={element.href}>
         {formatContent(element.content)}
       </a>
     );
