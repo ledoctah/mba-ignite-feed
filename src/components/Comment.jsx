@@ -17,7 +17,7 @@ export function Comment() {
 
               <time
                 title="11 de agosto às 18:36"
-                datetime="2024-08-11 18:36:21"
+                dateTime="2024-08-11 18:36:21"
               >
                 Cerca de 1h atrás
               </time>

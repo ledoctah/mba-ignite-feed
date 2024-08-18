@@ -1,43 +1,50 @@
+/* eslint-disable no-use-before-define */
+import { format, formatDistanceToNow } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+
 import styles from './Post.module.css';
+
+import { addElement } from '../utils/addElement';
 
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 
-export function Post() {
+export function Post({ author, content, publishedAt }) {
+  const publishedDateFormatted = format(
+    publishedAt,
+    "dd 'de' MMMM 'de' yyyy 'às' HH:mm'h'",
+    {
+      locale: ptBR,
+    },
+  );
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https://github.com/ledoctah.png" />
+          <Avatar src={author.avatarUrl} />
 
           <div className={styles.authorInfo}>
-            <strong>Matheus Ferreira</strong>
-            <span>Tech Lead</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
-        <time title="11 de agosto às 18:36" datetime="2024-08-11 18:36:21">
-          Publicado há 1h
+        <time
+          title={publishedDateFormatted}
+          dateTime={publishedAt.toISOString()}
+        >
+          {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-
-        <p>
-          Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-          no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-        </p>
-
-        <p>
-          👉&nbsp;<a href="#">jane.design/doctorcare</a>
-        </p>
-
-        <p>
-          <a href="#">#novoprojeto</a>&nbsp;
-          <a href="#">#nlw</a>&nbsp;
-          <a href="#">#rocketseat</a>
-        </p>
+        {content.map(line => addElement(line))}
       </div>
 
       <form className={styles.commentForm}>
