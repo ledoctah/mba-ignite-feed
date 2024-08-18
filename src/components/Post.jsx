@@ -12,7 +12,7 @@ import { Comment } from './Comment';
 
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState([]);
-  const [newCommentText, setNewCommentText] = useState();
+  const [newCommentText, setNewCommentText] = useState('');
 
   const publishedDateFormatted = format(
     publishedAt,
@@ -21,6 +21,8 @@ export function Post({ author, content, publishedAt }) {
       locale: ptBR,
     },
   );
+
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
@@ -40,7 +42,12 @@ export function Post({ author, content, publishedAt }) {
   }
 
   function handleNewCommentChange(event) {
+    event.target.setCustomValidity('');
     setNewCommentText(event.target.value);
+  }
+
+  function handleNewCommentInvalid(event) {
+    event.target.setCustomValidity('Esse campo é obrigatório!');
   }
 
   function deleteComment(commentId) {
@@ -82,11 +89,15 @@ export function Post({ author, content, publishedAt }) {
           name="comment"
           placeholder="Deixe um comentário"
           onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
           value={newCommentText}
+          required
         />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>
+            Publicar
+          </button>
         </footer>
       </form>
 
